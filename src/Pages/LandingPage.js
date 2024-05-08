@@ -11,7 +11,13 @@ export default function LandingPage() {
             <div>
                 <h1 className="greeting">Welcome.</h1>
             </div>
-            <div className="login-button-div">
+            
+        </div>
+    )
+}
+
+/*
+<div className="login-button-div">
                 <Link to="/login" className="login-button">
                     Login
                 </Link>
@@ -25,6 +31,4 @@ export default function LandingPage() {
                     &nbsp;to view Volcanoes of the World.
                 </p>
             </div>
-        </div>
-    )
-}
+             */

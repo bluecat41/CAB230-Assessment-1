@@ -1,3 +1,10 @@
+/* Variables */
+:root{
+  --header: #9E5E22;
+  --navbarhover: #F7E7D7;
+  --background: #F4DFCA
+}
+
 /* Fonts */
 h1{
   font-family: "Lexend", sans-serif;
@@ -12,15 +19,17 @@ p{
   font-family: "Lexend", sans-serif;
 }
 
+.lexend{
+  font-family: "Lexend", sans-serif;
+}
+
 /* Universal Styling */
 .text-button-underline{
   cursor: pointer;
-  color: black;
 }
 
 .text-button-no-underline{
   cursor: pointer;
-  color: black;
   text-decoration: none;
 }
 
@@ -31,10 +40,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--header);
 }
 
 .header{
-  box-shadow: 3px 3px 5px lightgrey;
+  box-shadow: 2px 2px 5px var(--header);
   position: relative;
 }
 
@@ -47,27 +57,56 @@ header {
 .header-title{
   font-size: 16px;
   font-weight: normal;
+  color: white;
 }
 
 .logoutButton{
   padding-right: 10px;
+  color: white;
   
 }
 
 .logoutButton:hover{
-  color:#98A886;
+  color: var(--navbar);
 }
+
+/* NavBar */
+.navbar{
+  width: 200px;
+  background-color: var(--background);
+  height: 100vh;
+  border-right: 1px solid;
+  border-color: #9E5E22;
+}
+
+.nav-button{
+  display: flex;
+  width: 200px;
+  height: 70px;
+  background-color: var(--background);
+  color:black;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+}
+
+.nav-button:hover{
+  background-color: var(--navbarhover);
+}
+
 
 /* Landing Page CSS */
 .greeting{
-  color: #C5C5C5;
+  color: #D27D2D;
 }
 
 .landing-page{
-  background-color: #F5F5F5;
+  background-color: var(--background);
   align-items: flex-end;
   min-height: 100vh;
   padding-top: 30px;
+  min-width: calc(100vw - 200px);
 }
 
 .landing-image{
@@ -76,56 +115,24 @@ header {
   opacity: 100%;
 }
 
-.login-button-div{
-  padding-top: 30px;
-}
-
-.login-button{
-  font-family: "Lexend", sans-serif;
-  background-color: #98A886;
-  color: white;
-  border: none;
-  padding: 20px 100px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 24px;
-  cursor: pointer;
-  border: 1px;
-  transition: all 0.3s ease 0s;
-  border-radius: 20px;
-}
-
-.login-button:hover{
-  background-color: #cbc9ad;
-}
-
-.register-here-text{
-  padding-top: 40px;
-  align-items: center;
-}
-
-.new-user{
-  margin-bottom: 0px;
-}
-
-.here-button{
-  color:#98A886;
-}
-
 /* 404 Page CSS */
 
 .error-page{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(320deg, #41521f, #98A886, #cbc9ad);
+  background: linear-gradient(320deg, #9E5E22, #C29A75, #F4DFCA);
   height: 100vh;
+  min-width: calc(100vw - 200px);
 }
 
 .error-title{
   color: white;
   margin-top: 0;
   margin-bottom: 0;
+}
+.error-home-button{
+  color: black;
 }
 
 .error-home-button:hover{
@@ -143,6 +150,11 @@ header {
   display: flex;
   flex-direction: row;
   flex: 1;
+}
+
+.flexBoxRow{
+  display: flex;
+  flex-direction: row;
 }
 
 .column-center{

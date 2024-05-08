@@ -1,15 +1,20 @@
 import Header from "./Header.js";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar"
 
 export default function RootLayout(){
-    const logoutButton = "Login";
+    const loginButton = "Login";
+    const registerButton = "Register";
 
     return(
         <div className="root-layout">
-            <Header logoutButton={logoutButton}/>
-            <main>
-                <Outlet />
-            </main>
+            <Header loginButton={loginButton} registerButton={registerButton}/>
+            <div className="flexBoxRowGrow">
+                <Navbar />
+                <div>
+                    <Outlet />
+                </div>
+            </div>
         </div>
     )
 }
