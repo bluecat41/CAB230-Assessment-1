@@ -12,6 +12,18 @@ p{
   font-family: "Lexend", sans-serif;
 }
 
+/* Universal Styling */
+.text-button-underline{
+  cursor: pointer;
+  color: black;
+}
+
+.text-button-no-underline{
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
 
 /* Header CSS */
 header {
@@ -39,9 +51,7 @@ header {
 
 .logoutButton{
   padding-right: 10px;
-  cursor: pointer;
-  color: black;
-  text-decoration: none;
+  
 }
 
 .logoutButton:hover{
@@ -100,6 +110,26 @@ header {
 
 .here-button{
   color:#98A886;
+}
+
+/* 404 Page CSS */
+
+.error-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(320deg, #41521f, #98A886, #cbc9ad);
+  height: 100vh;
+}
+
+.error-title{
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.error-home-button:hover{
+  color: white;
 }
 
 /* Alignment */
