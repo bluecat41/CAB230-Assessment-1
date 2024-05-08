@@ -1,4 +1,46 @@
-.App {
+
+/* Fonts */
+h1{
+  font-family: "Lexend", sans-serif;
+  font-size: 80px;
+}
+
+/* Landing Page CSS */
+.greeting{
+  color: #C5C5C5;
+}
+
+/* Alignment */
+.flexBoxColumnGrow{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.flexBoxRowGrow{
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.center{
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.App {
   text-align: center;
 }
 
@@ -35,4 +77,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+}*/
