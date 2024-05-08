@@ -7,6 +7,7 @@ import {
   RouterProvider,
   Route
 } from "react-router-dom";
+
 // Pages
 import LandingPage from "./Pages/LandingPage.js";
 import Login from "./Pages/Login.js";
@@ -14,6 +15,7 @@ import Register from "./Pages/Register.js";
 import ErrorPage from "./Pages/ErrorPage.js";
 import VolcanoList from "./Pages/VolcanoList.js";
 import HomePage from "./Pages/HomePage.js";
+import Header from "./Components/Header.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +34,10 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-   <RouterProvider router={router}/>
+    <>
+    <Header />
+      <RouterProvider router={router}/>
+   </>
   );
 }
 

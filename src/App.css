@@ -1,13 +1,77 @@
-
 /* Fonts */
 h1{
   font-family: "Lexend", sans-serif;
   font-size: 80px;
 }
 
+p{
+  font-family: "Lexend", sans-serif;
+}
+
+/* Header CSS */
+header {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.header{
+  box-shadow: 3px 3px 5px lightgrey;
+  position: relative;
+}
+
 /* Landing Page CSS */
 .greeting{
   color: #C5C5C5;
+}
+
+.landing-page{
+  background-color: #F5F5F5;
+  align-items: flex-end;
+  min-height: 100vh;
+  padding-top: 30px;
+}
+
+.landing-image{
+  content: url("/public/landing-image.png");
+  max-height: 50vh;
+  opacity: 100%;
+}
+
+.login-button-div{
+  padding-top: 30px;
+}
+
+.login-button{
+  font-family: "Lexend", sans-serif;
+  background-color: #98A886;
+  color: white;
+  border: none;
+  padding: 20px 100px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  cursor: pointer;
+  border: 1px;
+  transition: all 0.3s ease 0s;
+  border-radius: 20px;
+}
+
+.login-button:hover{
+  background-color: #cbc9ad;
+}
+
+.register-here-text{
+  padding-top: 40px;
+  align-items: center;
+}
+
+.new-user{
+  margin-bottom: 0px;
+}
+
+.here-button{
+  color:#98A886;
 }
 
 /* Alignment */
@@ -23,8 +87,12 @@ h1{
   flex: 1;
 }
 
-.center{
+.column-center{
   align-items: center;
+}
+
+.row-center{
+  justify-content: center;
 }
 
 
