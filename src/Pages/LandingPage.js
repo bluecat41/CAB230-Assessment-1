@@ -19,7 +19,7 @@ export default function LandingPage() {
             <div className="register-here-text flexBoxColumnGrow">
                 <p className="new-user"> New user? </p> 
                 <p> Please register&nbsp;
-                    <Link to="/register" className="here-button">
+                    <Link to="/register" className="here-button text-button-underline">
                         here 
                     </Link> 
                     &nbsp;to view Volcanoes of the World.

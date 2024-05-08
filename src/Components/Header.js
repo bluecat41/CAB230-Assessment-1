@@ -13,7 +13,7 @@ export default function Header(props) {
                 </h2>
             </div>
             <div className="logoutButton">
-                <Link className="logoutButton" to='/login'>{props.logoutButton}</Link>
+                <Link className="logoutButton text-button-no-underline" to='/login'>{props.logoutButton}</Link>
             </div>
         </header>
     </div>

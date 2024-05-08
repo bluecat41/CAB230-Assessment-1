@@ -2,9 +2,20 @@ import { Link } from "react-router-dom";
 
 export default function ErrorPage() {
     return(
-        <div className="flexBoxColumnGrow">
-            <h1>404</h1>
-            <p>Go to the <Link to="/">Homepage</Link></p>
+        <div className="flexBoxColumnGrow error-page">
+            <h1 className="error-title">Sorry, 404 Error</h1>
+            <h2>The page you are looking for cannot be found.</h2>
+            <p>Go back or please try our <Link className="text-button-underline error-home-button"to="/">home</Link> page instead.</p>
         </div>
     )
 }
+
+/**
+  <>
+        <div className="flexBoxColumnGrow error-page">
+        <h1 className="error-title">Sorry, 404 Error</h1>
+        <h3>The page you are looking for cannot be found.</h3>
+        <p>Go back or please try our <Link className="text-button-underline"to="/home">home</Link> page instead.</p>
+        </div>
+        </>
+ */
