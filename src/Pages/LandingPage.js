@@ -1,10 +1,7 @@
-import{ Link } from "react-router-dom";
-
 export default function LandingPage() {
-    
 
     return(
-        <div className="flexBoxColumnGrow landing-page column-center">
+        <div className="flexBoxColumnGrow landing-page background column-center">
             <div>
                 <img className="landing-image" alt="volcano-image" />
             </div>

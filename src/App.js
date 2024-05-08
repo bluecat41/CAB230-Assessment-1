@@ -1,6 +1,5 @@
 import './App.css';
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -14,7 +13,6 @@ import Login from "./Pages/Login.js";
 import Register from "./Pages/Register.js";
 import ErrorPage from "./Pages/ErrorPage.js";
 import VolcanoList from "./Pages/VolcanoList.js";
-import HomePage from "./Pages/HomePage.js";
 
 //Components
 import RootLayout from './Components/RootLayout';
@@ -25,7 +23,6 @@ const router = createBrowserRouter(
       <Route index element={<LandingPage />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
-      <Route path="/Home" element={<HomePage />} />
       <Route path="/VolcanoList" element={<VolcanoList />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
