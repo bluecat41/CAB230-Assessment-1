@@ -4,20 +4,48 @@ h1{
   font-size: 80px;
 }
 
+h2{
+  font-family: "Merriweather", serif;
+}
+
 p{
   font-family: "Lexend", sans-serif;
 }
+
 
 /* Header CSS */
 header {
   min-height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header{
   box-shadow: 3px 3px 5px lightgrey;
   position: relative;
+}
+
+.logo-icon{
+  content: url("/public/icon1.png");
+  max-height: 25px;
+  padding-left: 10px;
+}
+
+.header-title{
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.logoutButton{
+  padding-right: 10px;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.logoutButton:hover{
+  color:#98A886;
 }
 
 /* Landing Page CSS */

@@ -15,12 +15,14 @@ import Register from "./Pages/Register.js";
 import ErrorPage from "./Pages/ErrorPage.js";
 import VolcanoList from "./Pages/VolcanoList.js";
 import HomePage from "./Pages/HomePage.js";
-import Header from "./Components/Header.js";
+
+//Components
+import RootLayout from './Components/RootLayout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<LandingPage />} />
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<LandingPage />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
       <Route path="/Home" element={<HomePage />} />
@@ -35,9 +37,8 @@ function App() {
 
   return (
     <>
-    <Header />
       <RouterProvider router={router}/>
-   </>
+    </>
   );
 }
 
