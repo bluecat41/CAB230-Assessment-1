@@ -2,7 +2,8 @@
 :root{
   --header: #9E5E22;
   --navbarhover: #F7E7D7;
-  --background: #F4DFCA
+  --background: #F4DFCA;
+  --greeting: #D27D2D;
 }
 
 /* Fonts */
@@ -13,6 +14,11 @@ h1{
 
 h2{
   font-family: "Merriweather", serif;
+}
+
+h3{
+  font-family: "Lexend", sans-serif;
+  font-size: 40px;
 }
 
 p{
@@ -36,6 +42,11 @@ p{
 .background{
   background-color: var(--background);
 }
+
+.greeting-colour{
+  color: var(--greeting);
+}
+
 
 
 /* Header CSS */
@@ -147,6 +158,47 @@ header {
   min-height: 100vh;
   padding-top: 30px;
   min-width: calc(100vw - 200px);
+}
+
+.select-menu{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Individual Volcano Page */
+
+.volcano{
+  min-height: 103vh;
+}
+
+.volcano-left{
+  max-width: 30vw;
+}
+
+.back-button{
+  font-family: "Lexend", sans-serif;
+  background-color: var(--greeting);
+  color: white;
+  border: none;
+  padding: 18px 60px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px;
+  transition: all 0.3s ease 0s;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.back-button:hover{
+  background-color: var(--header);
+}
+
+li{
+  list-style-type: none;
+  margin-top: 10px;
+  font-size: 20px;
 }
 
 /* Login Page */

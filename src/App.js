@@ -27,8 +27,10 @@ const router = createBrowserRouter(
       <Route 
         path="volcanolist" 
         element={<VolcanoList />} 
-        loader={countriesLoader} />
-      <Route path="volcano" element={<Volcano />} />
+        loader={countriesLoader} 
+      />
+      <Route path="volcano" element={<Volcano />} 
+      />
       <Route path="*" element={<ErrorPage />} />
     </Route>
     

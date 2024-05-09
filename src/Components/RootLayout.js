@@ -11,7 +11,7 @@ export default function RootLayout(){
             <Header loginButton={loginButton} registerButton={registerButton}/>
             <div className="flexBoxRowGrow">
                 <Navbar />
-                <main className="main-container">
+                <main className="flexBoxRowGrow main-container">
                     <Outlet />
                 </main>
             </div>
