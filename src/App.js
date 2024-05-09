@@ -12,7 +12,8 @@ import LandingPage from "./Pages/LandingPage.js";
 import Login from "./Pages/Login.js";
 import Register from "./Pages/Register.js";
 import ErrorPage from "./Pages/ErrorPage.js";
-import VolcanoList from "./Pages/VolcanoList.js";
+import VolcanoList, { countriesLoader } from "./Pages/VolcanoList.js";
+import Volcano from "./Pages/Volcano.js";
 
 //Components
 import RootLayout from './Components/RootLayout';
@@ -21,9 +22,13 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<LandingPage />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
-      <Route path="/VolcanoList" element={<VolcanoList />} />
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+      <Route 
+        path="volcanolist" 
+        element={<VolcanoList />} 
+        loader={countriesLoader} />
+      <Route path="volcano" element={<Volcano />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
     
