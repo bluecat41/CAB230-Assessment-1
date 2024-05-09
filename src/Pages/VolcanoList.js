@@ -75,7 +75,7 @@ export default function VolcanoList() {
                 setSelectedRadius={setSelectedRadius}
             />
             <div>
-                {(rowData.length === 1) ? <p>1 volcano matched your search.</p>: <p>{rowData.length} volcanos matched your search.</p>}
+                {(rowData.length === 1) ? <p>1 volcano matched your search.</p>: <p>{rowData.length} volcanoes matched your search.</p>}
             </div>
             <div className="ag-theme-balham" style={{ height: "335px", width: "800px" }}>
             <AgGridReact

@@ -1,6 +1,9 @@
 
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Map, Marker } from "pigeon-maps"
+
+
 
 export default function Volcano() {
     // Router functions
@@ -29,6 +32,12 @@ export default function Volcano() {
         })
      }, []);
 
+     // Converting latitude and longitude values into Numbers for Map component
+     const lat = volcano.latitude;
+     const latNum = Number(lat);
+     const lng = volcano.longitude;
+     const lngNum = Number(lng);
+
     return(
         <div className="flexBoxRowGrow volcano background">
             <div className="flexBoxColumnGrow column-center volcano-left">
@@ -40,6 +49,7 @@ export default function Volcano() {
                     <li><b>Last Eruption:</b> {volcano.last_eruption}</li>
                     <li><b>Summit:</b> {volcano.summit}m</li>
                     <li><b>Elevation:</b> {volcano.elevation}ft</li>
+                    {volcano.latitude} {volcano.longitude}
                 </ul>
                 <button
                     className="back-button"
@@ -50,7 +60,11 @@ export default function Volcano() {
             </div>
             <div className="flexBoxColumnGrow column-center">
                 <h3 className="greeting-colour">Map</h3>
+                <Map height={400} width={510} defaultCenter={[0, 0]} defaultZoom={1}>
+                    <Marker width={50} anchor={[latNum, lngNum]} />
+                </Map>
             </div>
         </div>
     )
 }
+
