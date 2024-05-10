@@ -37,11 +37,13 @@ export default function Volcano() {
      const latNum = Number(lat);
      const lng = volcano.longitude;
      const lngNum = Number(lng);
+     // Colour for map marker
+     const color = `hsl(39, 100%, 50%)`;
 
     return(
         <div className="flexBoxRowGrow volcano background">
             <div className="flexBoxColumnGrow column-center volcano-left">
-                <h3 className="greeting-colour volcano-name">{volcano.name}</h3>
+                <h3 className="greeting-colour volcano-name" style={{"paddingLeft":"20px"}}>{volcano.name}</h3>
                 <ul className="volcano-details">
                     <li><b>Country:</b> {volcano.country}</li>
                     <li><b>Region:</b> {volcano.region}</li>
@@ -49,7 +51,6 @@ export default function Volcano() {
                     <li><b>Last Eruption:</b> {volcano.last_eruption}</li>
                     <li><b>Summit:</b> {volcano.summit}m</li>
                     <li><b>Elevation:</b> {volcano.elevation}ft</li>
-                    {volcano.latitude} {volcano.longitude}
                 </ul>
                 <button
                     className="back-button"
@@ -59,9 +60,9 @@ export default function Volcano() {
                 </button>
             </div>
             <div className="flexBoxColumnGrow column-center">
-                <h3 className="greeting-colour">Map</h3>
-                <Map height={400} width={510} defaultCenter={[0, 0]} defaultZoom={1}>
-                    <Marker width={50} anchor={[latNum, lngNum]} />
+                <h3 className="greeting-colour">Location</h3>
+                <Map height={520} width={520} defaultCenter={[0,0]} defaultZoom={1}>
+                    <Marker width={50} color={color}anchor={[latNum, lngNum]} />
                 </Map>
             </div>
         </div>

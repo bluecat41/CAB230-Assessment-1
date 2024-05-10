@@ -169,6 +169,7 @@ header {
 
 .volcano{
   min-height: 103vh;
+  flex-wrap: wrap;
 }
 
 .volcano-left{
@@ -207,6 +208,10 @@ li{
   min-height: 100vh;
   padding-top: 30px;
   min-width: calc(100vw - 200px);
+}
+
+.error-message{
+  color: #cc0000;
 }
 
 /* Register Page */

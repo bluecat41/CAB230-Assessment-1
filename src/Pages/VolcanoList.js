@@ -121,7 +121,6 @@ function DropDownSelect({ selected, setSelected, selectedRadius, setSelectedRadi
         <select className="select-menu" onChange={(e) => {
             selected=e.target.value;
             setSelected(selected);
-            setSelectedRadius("");
             }}
         >
             <option></option>
