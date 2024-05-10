@@ -5,6 +5,7 @@ export default function Register() {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ cpassword, setCPassword ] = useState("");
+    const [ errorResponse, setErrorResponse ] = useState("");
 
     //State for checking input errors
     const [ emailError, setEmailError ] = useState("");
@@ -22,6 +23,8 @@ export default function Register() {
         setEmailError(email1);
         setPassError(password1);
         setCPassError(cpassword1);
+        setRes("");
+        setErrorResponse("");
 
         let valid = true;
 
@@ -41,6 +44,7 @@ export default function Register() {
         setEmail("");
         setPassword("");
         setCPassword("");
+        setErrorResponse("");
     }
 
        //Function for registering
@@ -57,7 +61,17 @@ export default function Register() {
                   },
                 body: JSON.stringify({ email: email, password: password }),
             })
-            .then((res) => res.json()
+            .then((res) => {
+                if(res.status === 409){
+                    setErrorResponse("User already exists.");
+                    setRes("");
+                } else if (!res.ok) {
+                    throw new Error("Something went wrong."),
+                    setErrorResponse("Something went wrong. Please try again later.")
+                } else {
+                return res.json()
+                }
+            })
             .then((res) => {
                 if(res.Success == true){
                     console.log(res);
@@ -68,11 +82,9 @@ export default function Register() {
                     clearField();
                 }
             }
-            ))
+            )
             .catch((error) => console.log(error));
         };
-        
-        
     }
 
     return(
@@ -118,7 +130,14 @@ export default function Register() {
                         {res
                             && (
                                 <div className="error-message" style={{paddingBottom:"10px"}}>
-                                    {res.message}
+                                
+                                    <p>{res.message}. Please login.</p>
+                                </div>
+                            )}
+                        {errorResponse
+                            && (
+                                <div className="error-message" style={{paddingBottom:"10px"}}>
+                                    {errorResponse}
                                 </div>
                             )}
                     </div>

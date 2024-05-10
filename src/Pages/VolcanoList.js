@@ -5,6 +5,8 @@ import "ag-grid-community/styles/ag-theme-balham.css"
 import { useState, useEffect } from "react";
 
 export default function VolcanoList() {
+    const [ errorResponse, setErrorResponse ] = useState("");
+
     // Router function
     const navigate = useNavigate();
 
@@ -40,7 +42,10 @@ export default function VolcanoList() {
                  };
             })
         )
-        .then(volcanos => setRowData(volcanos));
+        .then(volcanos => setRowData(volcanos))
+        .catch(error => {
+            return error;
+        });;
     }, [selected]);
 
     // Set state for radius selected from drop down menu
@@ -49,7 +54,14 @@ export default function VolcanoList() {
     // Fetch volcano data based on selected country and selected radius and load into the table
     useEffect(() => {
         fetch("http://4.237.58.241:3000/volcanoes?country=" + selected + "&populatedWithin=" + selectedRadius)
-        .then(res => res.json())
+        .then(res =>  {
+            if (!res.ok) {
+            throw new Error("Something went wrong.")
+            } else {
+            setErrorResponse("")
+            return res.json()
+            }
+        })
         .then(data => (data = Array.from(data)))
         .then(data => 
             data.map(volcano => {
@@ -61,7 +73,11 @@ export default function VolcanoList() {
                  };
             })
         )
-        .then(volcanos => setRowData(volcanos));
+        .then(volcanos => setRowData(volcanos))
+        .catch(error => {
+            setErrorResponse("Something went wrong. Data is not accurate. Please try again later.")
+            return error;
+        });
     }, [selectedRadius]);
 
     return(
@@ -77,6 +93,12 @@ export default function VolcanoList() {
             <div>
                 {(rowData.length === 1) ? <p>1 volcano matched your search.</p>: <p>{rowData.length} volcanoes matched your search.</p>}
             </div>
+            {errorResponse
+                            && (
+                                <div className="error-message" style={{paddingBottom:"10px"}}>
+                                    {errorResponse}
+                                </div>
+                            )}
             <div className="ag-theme-balham" style={{ height: "335px", width: "800px" }}>
             <AgGridReact
                 columnDefs={columns}
@@ -91,10 +113,21 @@ export default function VolcanoList() {
 }
 
 // Loader function
-export const countriesLoader = async () => {
-    const res = await fetch('http://4.237.58.241:3000/countries')
-
-    return res.json()
+export async function countriesLoader(){
+    return fetch('http://4.237.58.241:3000/countries')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Something went wrong.")
+            } else {
+            return res.json()
+            }
+        })
+        .then(res => {
+            return res;
+        }).catch(error => {
+            console.log(error)
+            return error;
+        })
 }
 
 // Drop down component
@@ -118,14 +151,15 @@ function DropDownSelect({ selected, setSelected, selectedRadius, setSelectedRadi
     return(
         <div className="flexBoxRow">
         <p>Country: </p>
+        {country.length ? (
         <select className="select-menu" onChange={(e) => {
             selected=e.target.value;
             setSelected(selected);
             }}
         >
             <option></option>
-            {country.map(Item)}
-        </select>
+                {country.map(Item)}
+        </select>) : <p className="error-message" style={{marginLeft: "10px", marginRight: "10px"}}>Something went wrong. Please try again later.</p>}
         <p>Populated within:</p>
         <select className="select-menu" onChange={(e) => {
             selectedRadius=e.target.value;
@@ -133,7 +167,9 @@ function DropDownSelect({ selected, setSelected, selectedRadius, setSelectedRadi
             }}
         >
             <option></option>
-            {radius.map(Item)}
+            {radius.length && 
+            radius.map(Item)
+            }
         </select>
         </div>
     )

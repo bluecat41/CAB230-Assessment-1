@@ -1,12 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
+    const navigate = useNavigate();
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [ errorResponse, setErrorResponse ] = useState("");
 
     //State for checking input errors
     const [ emailError, setEmailError ] = useState("");
     const [ passError, setPassError ] = useState("");
+
+    const [res, setRes] = useState(null);
 
     //Function for validating form and checking for any input errors
     const validateForm = () => {
@@ -28,10 +33,39 @@ export default function Login() {
     }
 
     //Function for logging in
-    const login = () => {
+    const login = (e) => {
+        e.preventDefault();
         const form = document.getElementById("login");
         const formData = new FormData(form);
         const valid = validateForm(formData);
+
+        if (valid) {
+            fetch("http://4.237.58.241:3000/user/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                body: JSON.stringify({ email: email, password: password }),
+            })
+            .then((res) => {
+                if(res.status === 401){
+                    setErrorResponse("Incorrect email or password. Please try again.")
+                }  else if (!res.ok) {
+                throw new Error("Something went wrong."),
+                setErrorResponse("Something went wrong. Please try again later.")
+                } else {
+                return res.json()
+                }
+            })
+            .then((res) => {
+                localStorage.setItem("token", res.token);
+                console.log(res);
+                navigate("/");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        };
     }
 
     return(
@@ -62,27 +96,21 @@ export default function Login() {
                     />
                     <p className="error-message">{passError}</p>
                     </form>
+                    {res
+                            && (
+                                <div className="error-message" style={{paddingBottom:"10px"}}>
+                                    {res.message}
+                                </div>
+                            )}
+                    {errorResponse
+                            && (
+                                <div className="error-message" style={{paddingBottom:"10px"}}>
+                                    {errorResponse}
+                                </div>
+                            )}
                     <div className="flexBoxColumnGrow column-center">
                     <button className="login-button" onClick={login}>Login</button>
                     </div>
-            </div>
-        </div>
-    )
-}
-
-export function FormInput(props) {
-    return (
-        <div className="form-group">
-            <label>{props.label}</label>
-            <div>
-                <input
-                    type={props.type}
-                    name={props.name}
-                    className={props.class}
-                    label={props.label}
-                    defaultValue={props.value}
-                />
-                <p className="error-message">{props.error}</p>
             </div>
         </div>
     )

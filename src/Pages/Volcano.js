@@ -6,6 +6,9 @@ import { Map, Marker } from "pigeon-maps"
 
 
 export default function Volcano() {
+
+    const [ errorResponse, setErrorResponse ] = useState("");
+
     // Router functions
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -19,9 +22,20 @@ export default function Volcano() {
      // Fetch volcano data from API based on ID
      async function getVolcano(){
         return fetch("http://4.237.58.241:3000/volcano/" + id)
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Something went wrong.")
+            } else {
+            setErrorResponse("");
+            return res.json()
+            }
+        })
         .then(res =>{
             return res;
+        })
+        .catch(error => {
+            setErrorResponse("Something went wrong, please try again later.");
+            return error;
         })
      }
 
@@ -58,6 +72,12 @@ export default function Volcano() {
                 >
                     Back
                 </button>
+                {errorResponse
+                            ? (
+                                <div className="error-message" style={{paddingTop:"20px"}}>
+                                    {errorResponse}
+                                </div>
+                            ): null}
             </div>
             <div className="flexBoxColumnGrow column-center">
                 <h3 className="greeting-colour">Location</h3>
