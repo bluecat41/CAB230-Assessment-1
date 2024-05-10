@@ -4,18 +4,24 @@ import { checkEmailValid, checkPassword } from "./Login.js"
 export default function Register() {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [ cpassword, setCPassword ] = useState("");
 
     //State for checking input errors
     const [ emailError, setEmailError ] = useState("");
     const [ passError, setPassError ] = useState("");
+    const [cPassError, setCPassError ] = useState("");
+
+    const [res, setRes] = useState(null);
 
     //Function for validating form and checking for any input errorsconst validateForm = () => {
     const validateForm = () => {
         const email1 = checkEmailValid(email);
         const password1  = checkPassword(password);
+        const cpassword1 = comparePass(password, cpassword);
   
         setEmailError(email1);
         setPassError(password1);
+        setCPassError(cpassword1);
 
         let valid = true;
 
@@ -25,7 +31,16 @@ export default function Register() {
         if (password1){
             valid=false;
         }
+        if(cpassword1){
+            valid=false;
+        }
         return (valid)
+    }
+
+    function clearField(){
+        setEmail("");
+        setPassword("");
+        setCPassword("");
     }
 
        //Function for registering
@@ -43,14 +58,22 @@ export default function Register() {
                 body: JSON.stringify({ email: email, password: password }),
             })
             .then((res) => res.json()
-            .then((res) => console.log(res)))
+            .then((res) => {
+                if(res.Success == true){
+                    console.log(res);
+                    clearField();
+                } else {
+                    console.log(res);
+                    setRes(res);
+                    clearField();
+                }
+            }
+            ))
             .catch((error) => console.log(error));
         };
+        
+        
     }
-    //409: user already exists
-    //400: bad request
-
-
 
     return(
         <div className="flexBoxColumnGrow background register-page column-center">
@@ -79,18 +102,38 @@ export default function Register() {
                           }}
                     />
                     <p className="error-message">{passError}</p>
+                    <label htmlFor="cpassword">Confirm Password</label>
+                     <input 
+                        id="cpassword" 
+                        name="cpassword" 
+                        type="password" 
+                        value={cpassword}
+                        onChange={(event) => {
+                            setCPassword(event.target.value);
+                          }}
+                    />
+                    <p className="error-message">{cPassError}</p>
                     </form>
                     <div className="flexBoxColumnGrow column-center">
-                    <button className="login-button" onClick={register}>Register</button>
+                        {res
+                            && (
+                                <div className="error-message" style={{paddingBottom:"10px"}}>
+                                    {res.message}
+                                </div>
+                            )}
+                    </div>
+                    <div className="flexBoxColumnGrow column-center">
+                        <button className="login-button" onClick={register}>Register</button>
+                    
                     </div>
             </div>
         </div>
     )
-                        }
-
-
-export function checkName(name) {
-    if (!name) {
-        return "Name is required.";
     }
-}
+
+    function comparePass(pass1, pass2) {
+
+        if (pass1 !== pass2) {
+            return ("Passwords do not match.");
+        }
+    }
