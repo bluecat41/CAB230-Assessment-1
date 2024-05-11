@@ -59,8 +59,11 @@ export default function Login() {
             })
             .then((res) => {
                 localStorage.setItem("token", res.token);
-                console.log(res);
+                
                 navigate("/");
+                window.location.reload(false);
+                console.log(res);
+                
             })
             .catch((error) => {
                 console.log(error);
@@ -109,7 +112,7 @@ export default function Login() {
                                 </div>
                             )}
                     <div className="flexBoxColumnGrow column-center">
-                    <button className="login-button" onClick={login}>Login</button>
+                    <button className="login-form-button" onClick={login}>Login</button>
                     </div>
             </div>
         </div>

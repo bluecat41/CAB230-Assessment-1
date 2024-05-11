@@ -142,7 +142,7 @@ export default function Register() {
                             )}
                     </div>
                     <div className="flexBoxColumnGrow column-center">
-                        <button className="login-button" onClick={register}>Register</button>
+                        <button className="login-form-button" onClick={register}>Register</button>
                     
                     </div>
             </div>

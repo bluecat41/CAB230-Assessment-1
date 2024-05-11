@@ -75,14 +75,21 @@ header {
   color: white;
 }
 
-.logoutButton{
+.logout-button{
   padding-right: 10px;
   color: white;
-  
+}
+.login-button{
+  color: white;
+  margin-right: 20px;
 }
 
-.logoutButton:hover{
-  color: var(--navbar);
+.logout-button:hover{
+  color: var(--navbarhover);
+}
+
+.login-button:hover{
+  color: var(--navbarhover);
 }
 
 /* NavBar */
@@ -90,7 +97,7 @@ header {
   width: 200px;
   background-color: var(--background);
   border-right: 1px solid;
-  border-color: #9E5E22;
+  border-color: var(--header);
   height: 103vh;
 }
 
@@ -108,6 +115,14 @@ header {
 
 .nav-button:hover{
   background-color: var(--navbarhover);
+}
+
+/* Footer */
+
+.footer{
+  min-height: 100px;
+  border-top: 1px solid;
+  border-color: var(--header);
 }
 
 
@@ -213,6 +228,26 @@ li{
 .error-message{
   color: #cc0000;
   font-family: "Lexend", sans-serif;
+}
+
+.login-form-button{
+  font-family: "Lexend", sans-serif;
+  background-color: var(--greeting);
+  color: white;
+  border: none;
+  padding: 18px 60px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px;
+  transition: all 0.3s ease 0s;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.login-form-button:hover{
+  background-color: var(--header);
 }
 
 /* Register Page */

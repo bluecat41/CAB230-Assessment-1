@@ -2,7 +2,16 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useMatch } from "react";
 
 export default function Header(props) {
-    const user = localStorage.getItem("token");
+    const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
+
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+        setLoggedIn(true);
+
+        } else {
+        setLoggedIn(false)
+        }
+    }, [])
 
     return(
         <div className="header">
@@ -15,11 +24,15 @@ export default function Header(props) {
                     Volcanoes of the World
                 </h2>
             </div>
-            {user ? (<div className="logoutButton">
-                <Link className="logoutButton text-button-no-underline" onClick={logout} to='/login'>{props.logoutButton}</Link>
-            </div>) : (<div className="logoutButton">
-                <Link className="logoutButton text-button-no-underline" to='/login'>{props.loginButton}</Link>|&nbsp;&nbsp;
-                <Link className="logoutButton text-button-no-underline" to='/register'>{props.registerButton}</Link>
+            {loggedIn ? (
+            <div className="logoutButton">
+                <Link className="logout-button text-button-no-underline" onClick={logout} to='/login'>{props.logoutButton}</Link>
+               
+            </div>
+            ) : (
+            <div className="logoutButton">
+                <Link className="logout-button text-button-no-underline" to='/login'>{props.loginButton}</Link>
+                <Link className="logout-button text-button-no-underline" to='/register'>{props.registerButton}</Link>
             </div>)}
         </header>
     </div>
@@ -28,4 +41,5 @@ export default function Header(props) {
 
 async function logout(){
     localStorage.clear();
+    window.location.reload(false);
 }
