@@ -3,14 +3,14 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 
-export default function RootLayout(){
+export default function RootLayout() {
     const loginButton = "Login";
     const registerButton = "Register";
     const logoutButton = "Logout"
 
-    return(
+    return (
         <div className="root-layout">
-            <Header loginButton={loginButton} registerButton={registerButton} logoutButton={logoutButton}/>
+            <Header loginButton={loginButton} registerButton={registerButton} logoutButton={logoutButton} />
             <div className="flexBoxRowGrow">
                 <Navbar />
                 <main className="flexBoxRowGrow main-container">

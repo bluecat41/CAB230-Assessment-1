@@ -183,7 +183,6 @@ header {
 /* Individual Volcano Page */
 
 .volcano{
-  min-height: 103vh;
   flex-wrap: wrap;
 }
 

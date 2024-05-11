@@ -3,19 +3,19 @@ import { useState } from "react";
 
 export default function Login() {
     const navigate = useNavigate();
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState("");
-    const [ errorResponse, setErrorResponse ] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorResponse, setErrorResponse] = useState("");
 
     //State for checking input errors
-    const [ emailError, setEmailError ] = useState("");
-    const [ passError, setPassError ] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passError, setPassError] = useState("");
 
     const [res, setRes] = useState(null);
 
     //Function for validating form and checking for any input errors
     const validateForm = () => {
-        const password1  = checkPassword(password);
+        const password1 = checkPassword(password);
         const email1 = checkEmailValid(email);
 
         setEmailError(email1);
@@ -26,8 +26,8 @@ export default function Login() {
         if (email1) {
             valid = false;
         }
-        if (password1){
-            valid=false;
+        if (password1) {
+            valid = false;
         }
         return (valid)
     }
@@ -44,76 +44,76 @@ export default function Login() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                  },
+                },
                 body: JSON.stringify({ email: email, password: password }),
             })
-            .then((res) => {
-                if(res.status === 401){
-                    setErrorResponse("Incorrect email or password. Please try again.")
-                }  else if (!res.ok) {
-                throw new Error("Something went wrong."),
-                setErrorResponse("Something went wrong. Please try again later.")
-                } else {
-                return res.json()
-                }
-            })
-            .then((res) => {
-                localStorage.setItem("token", res.token);
-                
-                navigate("/");
-                window.location.reload(false);
-                console.log(res);
-                
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((res) => {
+                    if (res.status === 401) {
+                        setErrorResponse("Incorrect email or password. Please try again.")
+                    } else if (!res.ok) {
+                        throw new Error("Something went wrong."),
+                        setErrorResponse("Something went wrong. Please try again later.")
+                    } else {
+                        return res.json()
+                    }
+                })
+                .then((res) => {
+                    localStorage.setItem("token", res.token);
+
+                    navigate("/");
+                    window.location.reload(false);
+                    console.log(res);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         };
     }
 
-    return(
+    return (
         <div className="flexBoxColumnGrow background login-page column-center">
             <h1 className="greeting-colour">Login</h1>
             <div>
                 <form id="login" className="flexBoxColumnGrow column-center">
                     <label htmlFor="email">Email</label>
-                    <input 
-                        id="email" 
-                        name="email" 
-                        type="email" 
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
                         value={email}
                         onChange={(event) => {
                             setEmail(event.target.value);
-                          }}
+                        }}
                     />
                     <p className="error-message">{emailError}</p>
                     <label htmlFor="password">Password</label>
-                     <input 
-                        id="password" 
-                        name="password" 
-                        type="password" 
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
                         value={password}
                         onChange={(event) => {
                             setPassword(event.target.value);
-                          }}
+                        }}
                     />
                     <p className="error-message">{passError}</p>
-                    </form>
-                    {res
-                            && (
-                                <div className="error-message" style={{paddingBottom:"10px"}}>
-                                    {res.message}
-                                </div>
-                            )}
-                    {errorResponse
-                            && (
-                                <div className="error-message" style={{paddingBottom:"10px"}}>
-                                    {errorResponse}
-                                </div>
-                            )}
-                    <div className="flexBoxColumnGrow column-center">
+                </form>
+                {res
+                    && (
+                        <div className="error-message" style={{ paddingBottom: "10px" }}>
+                            {res.message}
+                        </div>
+                    )}
+                {errorResponse
+                    && (
+                        <div className="error-message" style={{ paddingBottom: "10px" }}>
+                            {errorResponse}
+                        </div>
+                    )}
+                <div className="flexBoxColumnGrow column-center">
                     <button className="login-form-button" onClick={login}>Login</button>
-                    </div>
+                </div>
             </div>
         </div>
     )

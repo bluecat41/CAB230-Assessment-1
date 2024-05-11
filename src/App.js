@@ -12,7 +12,8 @@ import LandingPage from "./Pages/LandingPage.js";
 import Login from "./Pages/Login.js";
 import Register from "./Pages/Register.js";
 import ErrorPage from "./Pages/ErrorPage.js";
-import VolcanoList, { countriesLoader } from "./Pages/VolcanoList.js";
+import VolcanoList from "./Pages/VolcanoList";
+import { countriesLoader } from "./Functions/loaderFunctions.js";
 import Volcano from "./Pages/Volcano.js";
 
 //Components
@@ -24,13 +25,13 @@ const router = createBrowserRouter(
       <Route index element={<LandingPage />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-      <Route path="volcanolist" element={<VolcanoList />} loader={countriesLoader} 
+      <Route path="volcanolist" element={<VolcanoList />} loader={countriesLoader}
       />
-      <Route path="volcano" element={<Volcano />} 
+      <Route path="volcano" element={<Volcano />}
       />
       <Route path="*" element={<ErrorPage />} />
     </Route>
-    
+
   )
 )
 
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
   );
 }
