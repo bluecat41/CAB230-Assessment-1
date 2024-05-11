@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect, useMatch } from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Header(props) {
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -7,7 +7,6 @@ export default function Header(props) {
     useEffect(() => {
         if (localStorage.getItem("token")) {
             setLoggedIn(true);
-
         } else {
             setLoggedIn(false)
         }

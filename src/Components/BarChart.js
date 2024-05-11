@@ -18,14 +18,14 @@ ChartJS.register(
     Legend
 );
 
-export default function BarChart() {
+export default function BarChart(props) {
     const options = {};
     const data = {
         labels: ["5km", "10km", "30km", "100km"],
         datasets: [
             {
                 label: "Population Within",
-                data: [400, 300, 400, 800]
+                data: [props.data1, props.data2, props.data3, props.data4]
             }
         ]
     };

@@ -1,4 +1,3 @@
-
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../Functions/loaderFunctions.js";
@@ -11,8 +10,10 @@ export default function Volcano() {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
 
-    // Setting the state to store the volcano data
+    // Setting the state to store the volcano and density data
     const [volcano, setVolcano] = useState([]);
+    const [density, setDensity] = useState([]);
+
     // Setting the state to show errors
     const [errorResponse, setErrorResponse] = useState("");
 
@@ -20,7 +21,7 @@ export default function Volcano() {
     const id = searchParams.get("id");
 
     // Fetch volcano data from API based on ID
-    async function getVolcano() {
+    async function getVolcanoUnauth() {
         return fetch(BASE_URL + "/volcano/" + id)
             .then(res => {
                 if (!res.ok) {
@@ -41,10 +42,58 @@ export default function Volcano() {
 
     // Load the volcano data on render and put data into state
     useEffect(() => {
-        getVolcano().then(res => {
+        getVolcanoUnauth().then(res => {
             setVolcano(res);
         })
     }, []);
+
+    // Get volcano data auth
+    async function getVolcanoAuth() {
+        return fetch(BASE_URL + "/volcano/" + id, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+        }).then(res => {
+            if (res.status === 401) {
+                setErrorResponse("Please login to view population density data.")
+            } else if (!res.ok) {
+                throw new Error("Something went wrong.")
+            } else {
+                setErrorResponse("");
+                return res.json()
+            }
+        })
+            .then(res => {
+                return res;
+            })
+            .catch(error => {
+                setErrorResponse("Population density data is currently unavailable, please try again later.");
+                return error;
+            })
+    }
+
+    // Load the auth volcano data on render and put data into state
+    useEffect(() => {
+        getVolcanoAuth().then(res => {
+            setDensity(res);
+        })
+    }, []);
+
+    //Data into an array
+
+    // Check for token and set in state if authenticated
+    const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            setLoggedIn(true);
+        } else {
+            setLoggedIn(false)
+        }
+    }, [])
 
     return (
         <div className="flexBoxColumnGrow">
@@ -77,8 +126,10 @@ export default function Volcano() {
                     <VolcanoMap latitude={volcano.latitude} longitude={volcano.longitude} />
                 </div>
             </div>
-            <BarChart />
+            {loggedIn ?
+                <BarChart data1={density.population_5km} data2={density.population_10km} data3={density.population_30km} data4={density.population_100km} />
+                : null
+            }
         </div>
     )
 }
-
