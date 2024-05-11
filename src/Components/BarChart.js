@@ -25,9 +25,12 @@ export default function BarChart(props) {
         datasets: [
             {
                 label: "Population Within",
-                data: [props.data1, props.data2, props.data3, props.data4]
-            }
-        ]
+                data: [props.data1, props.data2, props.data3, props.data4],
+                backgroundColor: ["#F7E7D7"],
+                borderColor: ["#D27D2D"],
+                borderWidth: 2,
+            },
+        ],
     };
 
     return (

@@ -25,13 +25,13 @@ export default function Header(props) {
                 </div>
                 {loggedIn ? (
                     <div className="logoutButton">
-                        <Link className="logout-button text-button-no-underline" onClick={logout} to='/login'>{props.logoutButton}</Link>
+                        <Link className="logout-button lexend text-button-no-underline" onClick={logout} to='/login'>{props.logoutButton}</Link>
 
                     </div>
                 ) : (
                     <div className="logoutButton">
-                        <Link className="logout-button text-button-no-underline" to='/login'>{props.loginButton}</Link>
-                        <Link className="logout-button text-button-no-underline" to='/register'>{props.registerButton}</Link>
+                        <Link className="logout-button lexend text-button-no-underline" to='/login'>{props.loginButton}</Link>
+                        <Link className="logout-button lexend text-button-no-underline" to='/register'>{props.registerButton}</Link>
                     </div>)}
             </header>
         </div>

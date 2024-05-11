@@ -1,9 +1,10 @@
 export default function DropDownSelect({ selected, setSelected, selectedRadius, setSelectedRadius, country }) {
     // Function for selection options
     const Item = function (value) {
-        return (<>
-            <option className="select-menu">{value}</option>
-        </>
+        return (
+            <>
+                <option className="select-menu">{value}</option>
+            </>
         )
     };
 
@@ -14,7 +15,7 @@ export default function DropDownSelect({ selected, setSelected, selectedRadius, 
         "30km",
         "100km"
     ]
-
+    
     return (
         <div className="flexBoxRow">
             <p>Country: </p>

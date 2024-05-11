@@ -47,6 +47,10 @@ p{
   color: var(--greeting);
 }
 
+.main-container{
+  min-height: 100vh;
+}
+
 
 
 /* Header CSS */
@@ -98,7 +102,6 @@ header {
   background-color: var(--background);
   border-right: 1px solid;
   border-color: var(--header);
-  height: 103vh;
 }
 
 .nav-button{
@@ -180,6 +183,10 @@ header {
   margin-right: 10px;
 }
 
+select{
+  outline: none;
+}
+
 /* Individual Volcano Page */
 
 .volcano{
@@ -219,7 +226,7 @@ li{
 /* Login Page */
 
 .login-page{
-  min-height: 100vh;
+  min-height: 50vh;
   padding-top: 30px;
   min-width: calc(100vw - 200px);
 }
@@ -247,6 +254,22 @@ li{
 
 .login-form-button:hover{
   background-color: var(--header);
+}
+
+input{
+  width: 250px;
+  height: 40px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 10px;
+  opacity: 10;
+  padding: 5px;
+}
+
+input:focus{
+  background-color: #fbf3eb;
+  outline: none;
+  border: none;
 }
 
 /* Register Page */

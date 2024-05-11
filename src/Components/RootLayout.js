@@ -6,7 +6,7 @@ import Footer from "./Footer"
 export default function RootLayout() {
     const loginButton = "Login";
     const registerButton = "Register";
-    const logoutButton = "Logout"
+    const logoutButton = "Logout";
 
     return (
         <div className="root-layout">
