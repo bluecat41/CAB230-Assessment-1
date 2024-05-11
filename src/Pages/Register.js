@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { checkEmailValid, checkPassword } from "./Login.js"
 
 export default function Register() {
@@ -143,7 +144,11 @@ export default function Register() {
                 </div>
                 <div className="flexBoxColumnGrow column-center">
                     <button className="login-form-button" onClick={register}>Register</button>
-
+                    <p style={{marginTop:"20px"}}>Already registered? Click&nbsp;
+                        <Link className="error-home-button" to="/login">
+                            here
+                        </Link> to login!
+                    </p>
                 </div>
             </div>
         </div>

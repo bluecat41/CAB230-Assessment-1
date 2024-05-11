@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
@@ -113,6 +113,11 @@ export default function Login() {
                     )}
                 <div className="flexBoxColumnGrow column-center">
                     <button className="login-form-button" onClick={login}>Login</button>
+                    <p style={{marginTop:"20px"}}>Not yet registered? Click&nbsp;
+                        <Link className="error-home-button" to="/register">
+                            here
+                        </Link> to register!
+                    </p>
                 </div>
             </div>
         </div>
