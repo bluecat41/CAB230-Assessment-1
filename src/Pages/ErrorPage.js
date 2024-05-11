@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function ErrorPage() {
+    // This page is displayed when 404 page not found error occurs
     return (
         <div className="flexBoxColumnGrow error-page">
             <h1 className="error-title">Sorry, 404 Error</h1>

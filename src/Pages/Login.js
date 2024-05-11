@@ -1,19 +1,22 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import { BASE_URL } from "../Functions/loaderFunctions.js";
 
 export default function Login() {
+    // For routing
     const navigate = useNavigate();
+    // State to hold email and password inputs
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // State for data fetching errors
     const [errorResponse, setErrorResponse] = useState("");
 
-    //State for checking input errors
+    // State for checking input errors
     const [emailError, setEmailError] = useState("");
     const [passError, setPassError] = useState("");
-
     const [res, setRes] = useState(null);
 
-    //Function for validating form and checking for any input errors
+    // Function for validating form and checking for any input errors
     const validateForm = () => {
         const password1 = checkPassword(password);
         const email1 = checkEmailValid(email);
@@ -32,7 +35,7 @@ export default function Login() {
         return (valid)
     }
 
-    //Function for logging in
+    // Function for logging in
     const login = (e) => {
         e.preventDefault();
         const form = document.getElementById("login");
@@ -40,13 +43,13 @@ export default function Login() {
         const valid = validateForm(formData);
 
         if (valid) {
-            fetch("http://4.237.58.241:3000/user/login", {
+            fetch(BASE_URL + "/user/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ email: email, password: password }),
-            })
+                })
                 .then((res) => {
                     if (res.status === 401) {
                         setErrorResponse("Incorrect email or password. Please try again.")
@@ -59,11 +62,9 @@ export default function Login() {
                 })
                 .then((res) => {
                     localStorage.setItem("token", res.token);
-
                     navigate("/");
                     window.location.reload(false);
                     console.log(res);
-
                 })
                 .catch((error) => {
                     console.log(error);
@@ -113,7 +114,7 @@ export default function Login() {
                     )}
                 <div className="flexBoxColumnGrow column-center">
                     <button className="login-form-button" onClick={login}>Login</button>
-                    <p style={{marginTop:"20px"}}>Not yet registered? Click&nbsp;
+                    <p style={{ marginTop: "20px" }}>Not yet registered? Click&nbsp;
                         <Link className="error-home-button" to="/register">
                             here
                         </Link> to register!
@@ -124,7 +125,7 @@ export default function Login() {
     )
 }
 
-//Validation Functions
+// Form validation Functions
 export function checkEmailValid(email) {
     const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const checkValid = new RegExp(regEx);

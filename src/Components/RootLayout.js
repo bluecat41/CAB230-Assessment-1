@@ -4,13 +4,10 @@ import Navbar from "./Navbar"
 import Footer from "./Footer"
 
 export default function RootLayout() {
-    const loginButton = "Login";
-    const registerButton = "Register";
-    const logoutButton = "Logout";
-
+   // Setting the root layout for the app. Header, Navbar and Footer are always displayed.
     return (
         <div className="root-layout">
-            <Header loginButton={loginButton} registerButton={registerButton} logoutButton={logoutButton} />
+            <Header />
             <div className="flexBoxRowGrow">
                 <Navbar />
                 <main className="flexBoxRowGrow main-container">

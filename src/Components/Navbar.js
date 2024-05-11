@@ -1,24 +1,13 @@
-import { Link } from "react-router-dom";
+import NavButton from "./NavButton";
 
-export default function Navbar(props) {
-
+export default function Navbar() {
+    // Displays navbar on left side of page
     return (
         <div className="navbar flexBoxRow">
             <div className="flexBoxColumnGrow">
-                <NavButton name="Home" to={"/"} />
-                <NavButton name="Volcanoes" to={"/VolcanoList"} />
+                <NavButton name="Home" to="/" />
+                <NavButton name="Volcanoes" to="/VolcanoList" />
             </div>
         </div>
     )
 }
-
-function NavButton(props) {
-    return (
-        <div>
-            <Link className="lexend nav-button text-button-no-underline" to={props.to}>
-                {props.name}
-            </Link>
-        </div>
-    )
-}
-

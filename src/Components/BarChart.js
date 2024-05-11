@@ -9,6 +9,7 @@ import {
     Legend
 } from "chart.js";
 
+// Registering the Chart.JS elements
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -20,6 +21,7 @@ ChartJS.register(
 
 export default function BarChart(props) {
     const options = {};
+    // The data and styling used for the bar chart
     const data = {
         labels: ["5km", "10km", "30km", "100km"],
         datasets: [

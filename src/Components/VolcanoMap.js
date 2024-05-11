@@ -8,7 +8,7 @@ export default function VolcanoMap(props){
         const lngNum = Number(lng);
         // Colour for map marker
         const color = `hsl(39, 100%, 50%)`;
-
+    // Returns map component for volcano location
     return(
         <>
             <Map height={520} width={520} defaultCenter={[0,0]} defaultZoom={1}>

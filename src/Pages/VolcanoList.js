@@ -7,6 +7,7 @@ import { BASE_URL } from "../Functions/loaderFunctions.js";
 import DropDownSelect from "../Components/DropDownSelect.js";
 
 export default function VolcanoList() {
+     // Setting the state to show errors
     const [errorResponse, setErrorResponse] = useState("");
 
     // Router function
@@ -89,7 +90,7 @@ export default function VolcanoList() {
                 return error;
             });
     }, [selectedRadius]);
-
+    // Returns discover volcanoes page with table 
     return (
         <div className="flexBoxColumnGrow column-center background volcano-list">
             <h1 className="greeting-colour">Discover Volcanoes</h1>
@@ -120,6 +121,7 @@ export default function VolcanoList() {
                     onRowClicked={(row) => navigate(`/volcano?id=${row.data.id}`)}
                 />
             </div>
+            <p>Want to know more? Click on a row to view more information about that volcano.</p>
         </div>
     )
 }

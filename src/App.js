@@ -13,12 +13,15 @@ import Login from "./Pages/Login.js";
 import Register from "./Pages/Register.js";
 import ErrorPage from "./Pages/ErrorPage.js";
 import VolcanoList from "./Pages/VolcanoList";
-import { countriesLoader } from "./Functions/loaderFunctions.js";
 import Volcano from "./Pages/Volcano.js";
 
-//Components
+// Components
 import RootLayout from './Components/RootLayout';
 
+// Functions
+import { countriesLoader } from "./Functions/loaderFunctions.js";
+
+// Creating browser router to display all routes using React Router module
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -31,12 +34,10 @@ const router = createBrowserRouter(
       />
       <Route path="*" element={<ErrorPage />} />
     </Route>
-
   )
 )
 
 function App() {
-
   return (
     <>
       <RouterProvider router={router} />

@@ -15,7 +15,7 @@ export default function DropDownSelect({ selected, setSelected, selectedRadius, 
         "30km",
         "100km"
     ]
-    
+    // Returns drop down select component
     return (
         <div className="flexBoxRow">
             <p>Country: </p>
@@ -25,7 +25,7 @@ export default function DropDownSelect({ selected, setSelected, selectedRadius, 
                     setSelected(selected);
                     setSelectedRadius("");
                 }}
-                >
+                > 
                     <option></option>
                     {country.map(Item)}
                 </select>) : <p className="error-message" style={{ marginLeft: "10px", marginRight: "10px" }}>Something went wrong. Please try again later.</p>}

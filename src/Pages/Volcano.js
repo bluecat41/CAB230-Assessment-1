@@ -20,7 +20,7 @@ export default function Volcano() {
     // Getting ID number from URL
     const id = searchParams.get("id");
 
-    // Fetch volcano data from API based on ID
+    // Fetch volcano data based on ID - user not logged in
     async function getVolcanoUnauth() {
         return fetch(BASE_URL + "/volcano/" + id)
             .then(res => {
@@ -47,7 +47,7 @@ export default function Volcano() {
         })
     }, []);
 
-    // Get volcano data auth
+    // Get volcano data for logged in user (population density)
     async function getVolcanoAuth() {
         return fetch(BASE_URL + "/volcano/" + id, {
             method: "GET",
@@ -74,14 +74,12 @@ export default function Volcano() {
             })
     }
 
-    // Load the auth volcano data on render and put data into state
+    // Load the population density data on render and put data into state
     useEffect(() => {
         getVolcanoAuth().then(res => {
             setDensity(res);
         })
     }, []);
-
-    //Data into an array
 
     // Check for token and set in state if authenticated
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -94,7 +92,7 @@ export default function Volcano() {
             setLoggedIn(false)
         }
     }, [])
-
+    // Returns the queried volcano data, includes ternary operator to show population density if user is logged in
     return (
         <div className="flexBoxColumnGrow">
             <div className="flexBoxRowGrow volcano background">

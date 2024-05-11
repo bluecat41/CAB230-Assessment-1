@@ -1,6 +1,7 @@
+// Base URL for endpoints
 export const BASE_URL = "http://4.237.58.241:3000";
 
-// Loader function
+// Loader function to load countries
 export async function countriesLoader() {
     return fetch(BASE_URL + '/countries')
         .then(res => {

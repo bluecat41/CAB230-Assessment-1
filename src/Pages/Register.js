@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../Functions/loaderFunctions.js";
 import { checkEmailValid, checkPassword } from "./Login.js"
 
 export default function Register() {
+    // State to hold email, password, confirm password inputs
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [cpassword, setCPassword] = useState("");
@@ -12,10 +14,9 @@ export default function Register() {
     const [emailError, setEmailError] = useState("");
     const [passError, setPassError] = useState("");
     const [cPassError, setCPassError] = useState("");
-
     const [res, setRes] = useState(null);
 
-    //Function for validating form and checking for any input errorsconst validateForm = () => {
+    //Function for validating form and checking for any input errors
     const validateForm = () => {
         const email1 = checkEmailValid(email);
         const password1 = checkPassword(password);
@@ -41,6 +42,7 @@ export default function Register() {
         return (valid)
     }
 
+    // Function for clearing input fields
     function clearField() {
         setEmail("");
         setPassword("");
@@ -48,14 +50,14 @@ export default function Register() {
         setErrorResponse("");
     }
 
-    //Function for registering
+    //Function for registering a user
     const register = (e) => {
         const form = document.getElementById("register");
         const formData = new FormData(form);
         const valid = validateForm(formData);
 
         if (valid) {
-            fetch("http://4.237.58.241:3000/user/register", {
+            fetch(BASE_URL + "/user/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -155,6 +157,7 @@ export default function Register() {
     )
 }
 
+// Function for checking that passwords match
 function comparePass(pass1, pass2) {
 
     if (pass1 !== pass2) {

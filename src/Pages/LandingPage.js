@@ -1,5 +1,5 @@
 export default function LandingPage() {
-
+    // Returns landing page of the app
     return (
         <div className="flexBoxColumnGrow landing-page background column-center">
             <div>
