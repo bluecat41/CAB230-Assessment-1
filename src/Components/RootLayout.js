@@ -4,7 +4,8 @@ import Navbar from "./Navbar"
 import Footer from "./Footer"
 
 export default function RootLayout() {
-   // Setting the root layout for the app. Header, Navbar and Footer are always displayed.
+   /* Setting the root layout for the app. Header, Navbar and Footer 
+    are always displayed. */
     return (
         <div className="root-layout">
             <Header />

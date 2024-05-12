@@ -94,7 +94,7 @@ export default function Volcano() {
     }, [])
     // Returns the queried volcano data, includes ternary operator to show population density if user is logged in
     return (
-        <div className="flexBoxColumnGrow">
+        <div className="flexBoxColumnGrow flex-wrap">
             <div className="flexBoxRowGrow volcano background">
                 <div className="flexBoxColumnGrow column-center volcano-left">
                     <h3 className="greeting-colour volcano-name" style={{ "paddingLeft": "20px" }}>{volcano.name}</h3>

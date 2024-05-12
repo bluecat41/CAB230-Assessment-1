@@ -28,10 +28,12 @@ const router = createBrowserRouter(
       <Route index element={<LandingPage />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-      <Route path="volcanolist" element={<VolcanoList />} loader={countriesLoader}
+      <Route 
+        path="volcanolist" 
+        element={<VolcanoList />} 
+        loader={countriesLoader}
       />
-      <Route path="volcano" element={<Volcano />}
-      />
+      <Route path="volcano" element={<Volcano />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )

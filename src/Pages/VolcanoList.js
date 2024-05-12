@@ -111,7 +111,7 @@ export default function VolcanoList() {
                         {errorResponse}
                     </div>
                 )}
-            <div className="ag-theme-material" style={{ height: "495px", width: "800px" }}>
+            <div className="ag-theme-material" style={{ height: "495px", width: "800px", fontSize: "18px" }}>
                 <AgGridReact
                     columnDefs={columns}
                     rowData={rowData}
