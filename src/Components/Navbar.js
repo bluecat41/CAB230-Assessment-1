@@ -6,7 +6,8 @@ export default function Navbar() {
         <div className="navbar flexBoxRow">
             <div className="flexBoxColumnGrow">
                 <NavButton name="Home" to="/" />
-                <NavButton name="Volcanoes" to="/VolcanoList" />
+                <NavButton name="Upload" to="/Upload" />
+                <NavButton name="User" to="/User" />
             </div>
         </div>
     )

@@ -28,7 +28,7 @@ export default function Header(props) {
                 </div>
                 <div>
                     <h2 className="header-title">
-                        Volcanoes of the World
+                        Video Transcoder
                     </h2>
                 </div>
                 {loggedIn ? (

@@ -12,14 +12,11 @@ import LandingPage from "./Pages/LandingPage.js";
 import Login from "./Pages/Login.js";
 import Register from "./Pages/Register.js";
 import ErrorPage from "./Pages/ErrorPage.js";
-import VolcanoList from "./Pages/VolcanoList";
-import Volcano from "./Pages/Volcano.js";
+import UserPage from "./Pages/User.js";
+import UploadPage from "./Pages/Upload.js";
 
 // Components
 import RootLayout from './Components/RootLayout';
-
-// Functions
-import { countriesLoader } from "./Functions/loaderFunctions.js";
 
 // Creating browser router to display all routes using React Router module
 const router = createBrowserRouter(
@@ -28,13 +25,9 @@ const router = createBrowserRouter(
       <Route index element={<LandingPage />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-      <Route 
-        path="volcanolist" 
-        element={<VolcanoList />} 
-        loader={countriesLoader}
-      />
-      <Route path="volcano" element={<Volcano />} />
       <Route path="*" element={<ErrorPage />} />
+      <Route path="user" element={<UserPage />} />
+      <Route path="upload" element={<UploadPage />} />
     </Route>
   )
 )

@@ -2,7 +2,7 @@
 export const BASE_URL = "http://4.237.58.241:3000";
 
 // Loader function to load countries
-export async function countriesLoader() {
+/*export async function countriesLoader() {
     return fetch(BASE_URL + '/countries')
         .then(res => {
             if (!res.ok) {
@@ -17,4 +17,4 @@ export async function countriesLoader() {
             console.log(error)
             return error;
         })
-}
+}*/
